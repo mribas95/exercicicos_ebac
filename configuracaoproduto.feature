@@ -1,17 +1,34 @@
+   #language: pt
 
-#language:pt
+            Funcionalidade: Configurar produto
+            Como cliente da EBAC-SHOP
+            Quero configurar meu produto de acordo com meu tamanho e gosto e escolher a quantidade
+            Para depois inserir no carrinho
 
-Como cliente da EBAC-SHOP
-Quero configurar meu produto de acordo com meu tamanho e gosto
-E escolher a quantidade
-Para depois inserir no carrinho
-Critérios de Aceitação:
-1 – Seleções de cor, tamanho e quantidade devem ser obrigatórios
-2 – Deve permitir apenas 10 produtos por venda
-3 –Quando eu clicar no botão “limpar” deve voltar ao estado original
+            Contexto:
+            Dado que eu acesse a página para configurar meu produto
 
-Cenario: botão limpar
-Dado que eu acesse a pagina e selecione cor, tamanho e quantidade
-E so deve permitir 10 produtos
-Quando clicar no botao limpar
-Entao deve voltar ao estado original 
+            Cenário: Seleção de opções obrigatórias
+            Quando eu preencher opções obrigatorias
+            Então devo finalizar compra
+
+            Cenário: Quantidade de produtos excedida
+            Quando eu selecionar o produto
+            E quantidade for >10
+            Então deve exibir mensagem de alerta "Quantidade de produtos excedidas"
+
+            Cenário: Limpar campos
+            Quando eu preencher opções obrigatorias
+            E clicar no botão "limpar"
+            Então deve voltar ao estado original
+
+            Esquema do Cenário: Seleção de itens obrigatórios
+            Quando eu preencher <cor> e <tamanho> e <quantidade>
+            Então devo finalizar compra
+
+            Exemplos:
+            | cor      | tamanho | quantidade | mensagem                           |
+            | "azul"   | "G"     | "2"        | "Quantidade de produtos excedidas" |
+            | "branco" | "M"     | "1"        |                                    |
+            | "preto"  | "P"     | "2"        |                                    |
+            | "rosa"   | "GG"    | "2"        |                                    |
