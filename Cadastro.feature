@@ -1,39 +1,32 @@
-  #language: pt
+           #language: pt
+
+            Funcionalidade: Tela de cadastro - Checkout
+            Como cliente da EBAC-SHOP
+            Quero  concluir meu cadastro
+            Para finalizar minha compra
+
+            Contexto:
+            Dado que eu acesse a página de cadastro da EBAC-SHOP
+
+            Cenário: Dados Obrigatórios
+            Quando eu preencher todos os campos obrigatórios
+            E marcados com asteriscos
+            Então deve conseguir concluir o cadastro
 
 
-            Funcionalidade: cadastro
-            Eu como cliente da EBAC-SHOP
-            Desejo realizar meu cadastro
-            Para em fim finalizar minha compra
+            Cenário: Cadastro com campos vazios
+            Quando eu não preencher os campos marcados como obrigatórios
+            Então deve aparecer a mensagem de alerta "Campos obrigatórios não preenchidos"
 
-
-            Cenario: autenticação válida
-            Quando eu fizer o cadastro
-            E preencher todos os dados corretamente e os campos com asterisco
-            Entao deve permitir finalizar a compra
-        
-
-            Cenario: autenticação inválido
-            Quando eu digitar todos os dados cadastrais com asterisco
-            E não deve permitir que o campo email seja inválido
-            Entao deve exibir uma mensagem de alerta "e-mail inválido"
-
-
-            Cenario: autenticação campo vazio
-            Quando eu fizer o cadastro
-            E deixar um campo com asterisco em branco
-            Entao deve exibir uma mensagem de alerta "Campo obrigatório em branco"
-
-
-            Esquema do Cenario: cadastrar multiplos usuários
-            Quando eu digitar <usuario> a <senha> e os campos obrigatorios
-            Entao deve exibir mensagem de "cadastro com sucesso" ou "cadastro inválido"
-
+            Esquema do Cenário: e-mail com formato inválido
+            Quando eu digitar <usuario>
+            E a <senha>
+            Então deve exibir a <mensagem> de erro
 
             Exemplos:
             | usuario                    | senha       | mensagem               |
             | "clara@ebac.com.br"        | "teste@123" | "cadastro inválido"    |
-            | "pedro@ebac.com.br"        | "teste@123" | "cadastro com sucesso" |
-            | "joão@ebac.com.br"         | "teste@123" | "cadastro com sucesso" |
-            | "Beatriz@ebac.com.br"      | "teste@123" | "cadastro com sucesso" |
-            | "jurema@ebac.com"          | "teste123"  | "cadastro inválido"    |
+            | "pedro@ebac.com.br"        | "teste@123" | "cadastro inválido"    |
+            | "joao@ebac.com.br"         | "teste@123" | "cadastro inválido"    |
+            | "Beatriz@ebac.com.br"      | "teste@123" | "cadastro inválido"    |
+            | "jurema@ebac.com"          | "teste@123" | "cadastro inválido"    |
